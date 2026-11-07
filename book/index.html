@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boulat Kitchen Catalog</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#E9DFD2;--page:#FBF7F1;--ink:#3A2E27;--mute:#8A7B6E;--line:#DCCFC0;--gold:#B99A6B;--band:#F1E6D6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-weight:300;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px}
+.stage{position:relative;width:min(100vw - 32px, 520px)}
+#book{width:100%}
+.page{background:var(--page);box-shadow:inset 0 0 40px rgba(120,90,60,.08);overflow:hidden;color:var(--ink)}
+.in{padding:34px 30px;height:100%;display:flex;flex-direction:column}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+.eye{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:500}
+h1,h2{font-family:"Cormorant Garamond",serif;font-weight:300;line-height:1.05}
+h1{font-size:clamp(26px,8vw,40px);margin:10px 0 14px}
+h2{font-size:30px;margin:8px 0 14px}
+h2 em{font-style:italic}
+p{font-size:12.5px;line-height:1.55;color:var(--mute)}
+.pic{width:100%;aspect-ratio:1;object-fit:cover;display:block;border-radius:2px;filter:saturate(.9)}
+.item{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+.item img{width:92px;height:92px;object-fit:cover;border-radius:2px;flex:none;filter:saturate(.9)}
+.item h3{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:19px;line-height:1.1}
+.item p{font-size:11.5px;margin-top:3px}
+.pr{font-family:"Cormorant Garamond",serif;font-size:14px;color:var(--ink);margin-top:5px}
+.pr span{color:var(--mute);font-size:12px}
+.list{list-style:none;margin-top:10px}
+.list li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}
+.list .n{font-family:"Cormorant Garamond",serif;font-size:17px}
+.list .d{display:block;font-size:10.5px;color:var(--mute)}
+.list .p{font-family:"Cormorant Garamond",serif;font-size:15px;white-space:nowrap}
+.sub{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:16px;color:var(--gold);margin:14px 0 2px}
+.foot{margin-top:auto;padding-top:12px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between}
+.cover{background:var(--band);text-align:center;justify-content:center;align-items:center}
+.cover img{width:110px;height:110px;border-radius:50%;margin-bottom:26px}
+.cover h1{font-size:clamp(28px,8.5vw,42px)}
+.quote{background:var(--band);justify-content:center;text-align:center}
+.quote p{font-family:"Cormorant Garamond",serif;font-size:26px;line-height:1.3;color:var(--ink);margin-top:14px}
+.quote strong{font-weight:600}
+.marks{display:flex;justify-content:center;gap:22px;margin-top:22px}
+.marks span{font-size:9px;letter-spacing:.2em;text-transform:uppercase;font-weight:500}
+.btn{display:block;margin:14px auto 0;padding:13px 22px;border:1px solid var(--ink);color:var(--ink);text-decoration:none;font-size:10px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;text-align:center;width:100%}
+.btn.wa{background:#25D366;border-color:#25D366;color:#0B1A10}
+.contact{text-align:center;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-top:16px;line-height:2}
+.contact a{color:var(--ink);text-decoration:none}
+.trio{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.trio img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:2px}
+.trio img:first-child{grid-column:1/3;aspect-ratio:2/1}
+.nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:0;background:rgba(58,46,39,.55);color:#fff;border-radius:50%;font-size:20px;cursor:pointer;z-index:5}
+.nav:disabled{opacity:.25}
+#prev{left:-10px}#next{right:-10px}
+.count{margin-top:12px;font-size:10px;letter-spacing:.2em;color:var(--mute);text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="stage">
+<button class="nav" id="prev" aria-label="Previous">&#8249;</button>
+<button class="nav" id="next" aria-label="Next">&#8250;</button>
+<div id="book">
+
+<div class="page"><div class="in cover">
+  <img src="../img/logo.png" alt="Boulat Kitchen">
+  <div class="eye">Gluten Free Collection</div>
+  <h1>Baked without wheat.<br><em>Without compromise.</em></h1>
+  <p>Soft cookies, brownies and banana bread.<br>All gluten free, all baked to order.</p>
+  <div class="marks"><span>Gluten Free</span><span>Halal MUI</span><span>Made to Order</span></div>
+</div></div>
+
+<div class="page"><div class="in quote">
+  <div class="eye">From the kitchen</div>
+  <p>There is room for something sweet in a <strong>gluten-free</strong> day. That is what we bake for at Boulat.</p>
+</div></div>
+
+<div class="page"><div class="in">
+  <div class="eye">I. Cookies</div><h2>Thick, soft,<br>baked to order.</h2>
+  <p>Two sizes: 110 g, or a smaller 55 g. Priced per piece.</p>
+  <div class="item"><img src="../img/original.jpg" alt=""><div><h3>Original</h3><p>Nutty brown butter dough with dark chocolate chips.</p><div class="pr">IDR 35K <span>110 g</span> &nbsp; IDR 26.5K <span>55 g</span></div></div></div>
+  <div class="item"><img src="../img/double-choco.jpg" alt=""><div><h3>Double Chocolate</h3><p>Cocoa dough, chocolate chunks and a fudgy centre.</p><div class="pr">IDR 35K <span>110 g</span> &nbsp; IDR 26.5K <span>55 g</span></div></div></div>
+  <div class="foot"><span>Boulat Kitchen</span><span>3</span></div>
+</div></div>
+
+<div class="page"><div class="in">
+  <div class="eye">I. Cookies</div><h2>Biscoff and<br>Red Velvet.</h2>
+  <div class="item"><img src="../img/biscoff.jpg" alt=""><div><h3>Biscoff</h3><p>Caramelised biscuit spread folded into the dough, with a whole Biscoff biscuit on top.</p><div class="pr">IDR 38K <span>110 g</span> &nbsp; IDR 28.5K <span>55 g</span></div></div></div>
+  <div class="item"><img src="../img/red-velvet.jpg" alt=""><div><h3>Red Velvet &amp; Cream Cheese</h3><p>Red velvet cocoa cookie with a soft cream cheese centre.</p><div class="pr">IDR 38K <span>110 g</span> &nbsp; IDR 28.5K <span>55 g</span></div></div></div>
+  <div class="item"><img src="../img/healthy-choco.jpg" alt=""><div><h3>Healthy Choco Cookies</h3><p>Small cocoa cookies with an almond on top. Sold by the cup.</p><div class="pr">IDR 50K <span>12 oz cup</span></div></div></div>
+  <div class="foot"><span>Boulat Kitchen</span><span>4</span></div>
+</div></div>
+
+<div class="page"><div class="in">
+  <div class="eye">II. Brownies &amp; Blondies</div><h2>Dense, dark,<br>cut by hand.</h2>
+  <img class="pic" src="../img/brownie-cups.jpg" alt="" style="aspect-ratio:3/2">
+  <div class="sub">Bite-sized pieces in a 12 oz cup</div>
+  <ul class="list">
+    <li><span><span class="n">Classic Brownies</span><span class="d">Rich chocolate in a bite-sized brownie.</span></span><span class="p">IDR 38K</span></li>
+    <li><span><span class="n">Blondies</span><span class="d">Golden bites with a mellow caramel sweetness.</span></span><span class="p">IDR 40K</span></li>
+    <li><span><span class="n">Cheese Brownies</span><span class="d">Chocolate brownies with a savoury touch of cheese.</span></span><span class="p">IDR 43K</span></li>
+    <li><span><span class="n">Peppermint Brownies</span><span class="d">Chocolate brownies with a cool peppermint finish.</span></span><span class="p">IDR 42K</span></li>
+    <li><span><span class="n">Mixed Cup</span><span class="d">A little of everything in one cup.</span></span><span class="p">IDR 41K</span></li>
+    <li><span><span class="n">Mini Brownie Cup</span><span class="d">Mini brownies in cupcake form.</span></span><span class="p">IDR 50K</span></li>
+  </ul>
+  <div class="foot"><span>Boulat Kitchen</span><span>5</span></div>
+</div></div>
+
+<div class="page"><div class="in">
+  <div class="eye">II. Brownies &amp; Blondies</div><h2>Full slab,<br>20 x 20 cm.</h2>
+  <img class="pic" src="../img/slab.jpg" alt="" style="aspect-ratio:3/2">
+  <ul class="list">
+    <li><span><span class="n">Classic Brownies</span><span class="d">Rich chocolate, one whole slab.</span></span><span class="p">IDR 265K</span></li>
+    <li><span><span class="n">Blondies</span><span class="d">Golden, with a mellow caramel sweetness.</span></span><span class="p">IDR 280K</span></li>
+    <li><span><span class="n">Cheese Brownies</span><span class="d">Chocolate brownies with a savoury touch of cheese.</span></span><span class="p">IDR 300K</span></li>
+    <li><span><span class="n">Peppermint Brownies</span><span class="d">Chocolate brownies with a cool peppermint finish.</span></span><span class="p">IDR 290K</span></li>
+  </ul>
+  <div class="foot"><span>Boulat Kitchen</span><span>6</span></div>
+</div></div>
+
+<div class="page"><div class="in">
+  <div class="eye">III. Banana Bread</div><h2>Moist, dense,<br>made with ripe bananas.</h2>
+  <p>One loaf, 20 x 10 cm. Four kinds.</p>
+  <img class="pic" src="../img/banana-loaf.jpg" alt="" style="aspect-ratio:3/2;margin-top:10px">
+  <ul class="list">
+    <li><span><span class="n">Original</span><span class="d">Plain banana bread.</span></span><span class="p">IDR 90K</span></li>
+    <li><span><span class="n">Chocolate Chip</span><span class="d">With dark chocolate chips.</span></span><span class="p">IDR 100K</span></li>
+    <li><span><span class="n">Walnut</span><span class="d">With walnuts.</span></span><span class="p">IDR 110K</span></li>
+    <li><span><span class="n">Walnut &amp; Chocolate Chip</span><span class="d">With walnuts and dark chocolate chips.</span></span><span class="p">IDR 125K</span></li>
+  </ul>
+  <div class="foot"><span>Boulat Kitchen</span><span>7</span></div>
+</div></div>
+
+<div class="page"><div class="in">
+  <div class="eye">IV. Hampers</div><h2>Curated hampers,<br>put together your way.</h2>
+  <p>Choose any pieces from the collection. Boxed, lined and tied with a ribbon. Priced by what goes in. Ask on WhatsApp for a quote.</p>
+  <div class="trio"><img src="../img/hamper-set.jpg" alt=""><img src="../img/hamper-closed.jpg" alt=""><img src="../img/hamper-open.jpg" alt=""></div>
+  <div class="foot"><span>Boulat Kitchen</span><span>8</span></div>
+</div></div>
+
+<div class="page"><div class="in">
+  <div class="eye">The Baker</div><h2>Rini Wahyuningsih</h2>
+  <img class="pic" src="../img/rini.jpg" alt="" style="aspect-ratio:4/3">
+  <p style="margin-top:14px">Self-taught baker, baking with love. More than ten years in bakery, specialising in gluten free. Based in Jakarta.</p>
+  <p style="margin-top:8px">Boulat Kitchen is Halal certified by MUI. Everything is baked by hand, in small batches, from premium ingredients.</p>
+  <div class="foot"><span>Boulat Kitchen</span><span>9</span></div>
+</div></div>
+
+<div class="page"><div class="in" style="justify-content:center;text-align:center">
+  <div class="eye">To Order</div><h2>Made to order.</h2>
+  <p>Send a message on WhatsApp to ask a question or place an order.</p>
+  <a class="btn wa" href="https://wa.me/6287888300899?text=Hello%20Boulat%20Kitchen%2C%20I%20would%20like%20to%20enquire%20about%20your%20gluten%20free%20collection." target="_blank" rel="noopener">Enquire on WhatsApp</a>
+  <a class="btn" href="https://wa.me/6287888300899?text=Hello%20Boulat%20Kitchen%2C%20I%20would%20like%20to%20place%20an%20order.%0AItems%3A%20%0AQuantity%3A%20%0ADate%3A%20" target="_blank" rel="noopener">Place an Order</a>
+  <div class="contact"><a href="https://wa.me/6287888300899" target="_blank" rel="noopener">WhatsApp 0878 8830 0899</a><br><a href="https://instagram.com/boulat.kitchen" target="_blank" rel="noopener">@boulat.kitchen</a></div>
+</div></div>
+
+<div class="page"><div class="in cover">
+  <img src="../img/logo.png" alt="Boulat Kitchen">
+  <div class="eye">Boulat Kitchen</div>
+  <p style="margin-top:10px">Gluten free · Halal MUI · Jakarta<br>@boulat.kitchen · 0878 8830 0899</p>
+</div></div>
+
+</div>
+<div class="count" id="count"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+<script>
+(function(){
+  var el=document.getElementById('book'),w=el.clientWidth,h=Math.round(w*1.42);
+  var pf=new St.PageFlip(el,{width:w,height:h,size:'fixed',usePortrait:true,showCover:true,maxShadowOpacity:.35,flippingTime:900,mobileScrollSupport:false});
+  pf.loadFromHTML(document.querySelectorAll('.page'));
+  var c=document.getElementById('count'),p=document.getElementById('prev'),n=document.getElementById('next'),total=pf.getPageCount();
+  function upd(){var i=pf.getCurrentPageIndex();c.textContent=(i+1)+' / '+total;p.disabled=i===0;n.disabled=i>=total-1;}
+  pf.on('flip',upd);upd();
+  p.onclick=function(){pf.flipPrev()};n.onclick=function(){pf.flipNext()};
+  document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')pf.flipNext();if(e.key==='ArrowLeft')pf.flipPrev();});
+})();
+</script>
+</body>
+</html>
